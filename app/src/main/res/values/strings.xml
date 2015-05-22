@@ -9,5 +9,10 @@
     <string name="button_abir_opcao">Abir</string>
     <string name="button_apagar"><![CDATA[<]]></string>
     <string name="title_activity_calculadora">CalculadoraActivity</string>
+    <string name="sair">Deseja sair?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sim">Sim</string>
+
+
 
 </resources>

@@ -1,5 +1,7 @@
 package dpassos.com.br.basicview;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -48,16 +50,29 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.sair);
+
+        builder.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MainActivity.super.onBackPressed();
+            }
+        });
+        builder.setNegativeButton(R.string.cancelar, null);
+        builder.show();
+    }
+
+    @Override
     public void onClick(View v) {
         if(v.getId() == R.id.activity_main_bt_opcao){
-
             RadioGroup rg = (RadioGroup)findViewById(R.id.radioGroup);
 
             int opcao = rg.getCheckedRadioButtonId() == R.id.radioButton2 ? 1 : 2;
             Intent it = new Intent(this, CalculadoraActivity.class);
             it.putExtra("opcao",opcao);
             startActivity(it);
-            finish();
         }
     }
 }
