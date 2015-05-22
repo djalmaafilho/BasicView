@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BasicView</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="radio_button_opcao1">Opção 1</string>
+    <string name="radio_button_opcao2">Opção 2</string>
+    <string name="button_abir_opcao">Abir</string>
+    <string name="button_apagar"><![CDATA[<]]></string>
+    <string name="title_activity_calculadora">CalculadoraActivity</string>
+
+</resources>
