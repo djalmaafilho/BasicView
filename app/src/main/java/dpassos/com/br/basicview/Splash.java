@@ -1,12 +1,15 @@
 package dpassos.com.br.basicview;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Esta Activity mostra como enviar um dado para uma proxima tela.
@@ -32,6 +35,7 @@ public class Splash extends ActionBarActivity implements Runnable{
 
         h = new Handler();
         h.postDelayed(this, 5000);
+
     }
 
 
@@ -53,7 +57,6 @@ public class Splash extends ActionBarActivity implements Runnable{
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

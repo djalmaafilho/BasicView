@@ -1,8 +1,10 @@
 package dpassos.com.br.basicview;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,8 +14,12 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
+    private long acesso;
+    private ArrayList<String> lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +30,31 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         Button btOpcao = (Button)findViewById(R.id.activity_main_bt_opcao);
         btOpcao.setOnClickListener(this);
+
+        SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
+
+        acesso = sp.getLong("acesso", -1l);
+        if(acesso == -1){
+            acesso = System.currentTimeMillis();
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putLong("acesso", acesso);
+            editor.commit();
+        }
+
+        lista = new ArrayList<>();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, "Acesso em : "+acesso, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("lista", lista);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,6 +89,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 MainActivity.super.onBackPressed();
             }
         });
+
         builder.setNegativeButton(R.string.cancelar, null);
         builder.show();
     }

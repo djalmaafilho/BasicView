@@ -12,6 +12,9 @@
     <string name="sair">Deseja sair?</string>
     <string name="cancelar">Cancelar</string>
     <string name="sim">Sim</string>
+    <string name="title_activity_lista">ListaActivity</string>
+    <string name="title_activity_grid">GridActivity</string>
+    <string name="title_activity_custom_view">CustomViewActivity</string>
 
 
 
